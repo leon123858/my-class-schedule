@@ -1,3 +1,5 @@
+import {MaxTime} from "./config.ts";
+
 export interface TimeUnit {
     day: number;
     time: number;
@@ -14,9 +16,8 @@ export interface ClassItem {
     name: string;
     place: string;
     isClass: boolean;
+    isCurrent: boolean;
 }
-
-const MaxTime = 10;
 
 export const interpret = (input: ClassUnit[], day: number) => {
     const realClass = input.reduce((acc: ClassItem[], cur: ClassUnit) => {
@@ -27,6 +28,7 @@ export const interpret = (input: ClassUnit[], day: number) => {
                 name: cur.name,
                 place: cur.place,
                 isClass: true,
+                isCurrent: false,
             };
         });
         return [...acc, ...items];
@@ -37,6 +39,7 @@ export const interpret = (input: ClassUnit[], day: number) => {
             name: '-',
             place: '-',
             isClass: false,
+            isCurrent: false,
         }
     );
     realClass.forEach((item: ClassItem) => {
@@ -48,6 +51,7 @@ export const interpret = (input: ClassUnit[], day: number) => {
             name: item.name,
             place: item.place,
             isClass: item.isClass,
+            isCurrent: item.isCurrent,
         };
-    });
+    }) as ClassItem[];
 }

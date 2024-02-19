@@ -3,37 +3,33 @@ import {Tabs} from 'antd';
 import {useEffect, useState} from "react";
 import {ClassUnit, interpret} from "../utils/interpreter.ts";
 import {Day} from "./Day.tsx";
+import {reverseCurrentTime} from "../utils/time.ts";
+
+
+const dayList = ['週一', '週二', '週三', '週四', '週五'];
 
 export const Schedule = ({data}: {
     data: ClassUnit[];
 }) => {
     const [activeKey, setActiveKey] = useState('1');
+    const curTime = reverseCurrentTime();
+    const curDay = new Date().getDay();
     const items: TabsProps['items'] = [
-        {
-            key: '1',
-            label: '週一',
-            children: <Day items={interpret(data, 1)}/>,
-        },
-        {
-            key: '2',
-            label: '週二',
-            children: <Day items={interpret(data, 2)}/>,
-        },
-        {
-            key: '3',
-            label: '週三',
-            children: <Day items={interpret(data, 3)}/>,
-        },
-        {
-            key: '4',
-            label: '週四',
-            children: <Day items={interpret(data, 4)}/>,
-        },
-        {
-            key: '5',
-            label: '週五',
-            children: <Day items={interpret(data, 5)}/>,
-        },
+        ...(new Array(5).fill(0).map((_, index) => {
+            return {
+                key: String(index + 1),
+                label: dayList[index],
+                children: <Day items={interpret(data, index + 1).map((v)=>{
+                    if (curDay !== index + 1) {
+                        return v;
+                    }
+                    if (v.time >= curTime) {
+                        v.isCurrent = true;
+                    }
+                    return v;
+                })}/>,
+            };
+        })),
     ];
     useEffect(() => {
         // 確認今天星期幾
@@ -44,7 +40,7 @@ export const Schedule = ({data}: {
         }
         setActiveKey(String(today));
     }, []);
-    return <Tabs activeKey={activeKey} items={items} onChange={(e)=>{
+    return <Tabs type={"card"} centered={true} activeKey={activeKey} items={items} onChange={(e)=>{
         setActiveKey(e);
     }}/>;
 };

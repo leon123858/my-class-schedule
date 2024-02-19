@@ -9,7 +9,7 @@ export default defineConfig({
         registerType: 'autoUpdate', devOptions: {
             enabled: true
         },
-        includeAssets: ['favicon.ico', 'vite-192.png', 'vite.svg'],
+        includeAssets: ['favicon.ico', 'vite-192.png', 'vite.svg', 'data.json'],
         manifest: {
             name: 'My Class Schedule',
             short_name: 'MCS',
