@@ -19,11 +19,11 @@ export const Schedule = ({data}: {
             return {
                 key: String(index + 1),
                 label: dayList[index],
-                children: <Day items={interpret(data, index + 1).map((v)=>{
+                children: <Day items={interpret(data, index + 1).map((v) => {
                     if (curDay !== index + 1) {
                         return v;
                     }
-                    if (v.time >= curTime) {
+                    if (v.time === curTime) {
                         v.isCurrent = true;
                     }
                     return v;
@@ -40,7 +40,7 @@ export const Schedule = ({data}: {
         }
         setActiveKey(String(today));
     }, []);
-    return <Tabs type={"card"} centered={true} activeKey={activeKey} items={items} onChange={(e)=>{
+    return <Tabs type={"card"} centered={true} activeKey={activeKey} items={items} onChange={(e) => {
         setActiveKey(e);
     }}/>;
 };

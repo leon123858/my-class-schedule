@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+# My Class Schedule
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+我的課表, 這是一個簡單的課表, 用來記錄我的課程時間, 並且基於 PWA 可以被安裝到手機桌面上, 並且可以離線使用.
 
-Currently, two official plugins are available:
+## 如何個人化設置
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. 修改 `public/data.json` 裡面的課程資料
+2. 課程時間是基於 `src/utils/config.js` 裡面的 `timeNumber2String` 進行轉換, 你可以自行修改這個函數來適應你的課程時間,
+   切勿調整格式
+3. 針對 `src/utils/config.js` 裡面的 `timeNumber2String` 進行修改, 須按照總課堂數設置 `MaxTime` 的值
 
-## Expanding the ESLint configuration
+## 如何安裝 PWA
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. 進入網站
+2. 點擊設置, 點擊加入主畫面
+3. PWA 會自動判斷網站是否更新, 自行更新 APP
 
-- Configure the top-level `parserOptions` property like this:
+## 如何自行發布
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+`fork` 本專案即可, 有設置 CICD 自動部署到 Github Pages, 若失敗請設置相關權限
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Demo
+
+![img_1.png](img_1.png)

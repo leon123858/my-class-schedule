@@ -7,7 +7,7 @@ function App() {
     useEffect(() => {
         fetch(`data.json`)
             .then((r) => r.json())
-            .then((result) =>{
+            .then((result) => {
                 setData(result)
             })
             .catch((e) => {

@@ -1,5 +1,5 @@
 import {Timeline, Tooltip} from 'antd';
-import { ClockCircleOutlined } from '@ant-design/icons';
+import {ClockCircleOutlined} from '@ant-design/icons';
 import {ClassItem} from "../utils/interpreter";
 import {timeNumber2String} from "../utils/config.ts";
 
@@ -20,7 +20,7 @@ export function Day({
                         </Tooltip>
                     ),
                     color: isClass ? 'blue' : 'gray',
-                    dot: isCurrent ? <ClockCircleOutlined style={{ fontSize: '16px' }} /> : null,
+                    dot: isCurrent ? <ClockCircleOutlined style={{fontSize: '16px'}}/> : null,
                 };
             })}
         />
