@@ -18,6 +18,42 @@
     ]
   },
   {
+    "name": "金融分析",
+    "place": "管2-301",
+    "time": [
+      {
+        "day": 2,
+        "time": 2
+      },
+      {
+        "day": 2,
+        "time": 3
+      },
+      {
+        "day": 2,
+        "time": 4
+      }
+    ]
+  },
+  {
+    "name": "meeting",
+    "place": "Lab 408",
+    "time": [
+      {
+        "day": 3,
+        "time": 2
+      },
+      {
+        "day": 3,
+        "time": 3
+      },
+      {
+        "day": 3,
+        "time": 4
+      }
+    ]
+  },
+  {
     "name": "系統軟體設計與實作特論",
     "place": "資111",
     "time": [
